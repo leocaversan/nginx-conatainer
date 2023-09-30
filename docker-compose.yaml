@@ -1,0 +1,20 @@
+version: '3'
+services:
+  react-app-1:
+    build:
+      context: ./react-app-1
+    ports:
+      - "5001:3000"
+  react-app-2:
+    build:
+      context: ./react-app-2
+    ports:
+      - "4000:3000"
+  nginx:
+    build:
+      context: ./nginx
+    ports:
+      - "8080:8080"
+    depends_on:
+      - react-app-1
+      - react-app-2
